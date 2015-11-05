@@ -1,0 +1,43 @@
+﻿@model NettButikk_Oppg2.Model.Vare
+
+@{
+    ViewBag.Title = "VareDetaljer";
+}
+
+<h2>Vare Detaljer</h2>
+
+<div>
+    <h4>Vare</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Varenavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varenavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Varebeholdning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varebeholdning)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bestill", "RegistrerBestilling", "Bestilling", new { id = Model.ID }) |
+    @Html.ActionLink("Endre", "endreVare", new { id = Model.ID }) |
+    @Html.ActionLink("Tilbake til Varer", "VareListe")
+</p>

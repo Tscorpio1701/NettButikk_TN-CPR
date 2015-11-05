@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Hjem</h2>
+
+<div>
+    <p>
+        Velkommen til vår nettbutikk! Gå til varelisten vår for å se varene våre!
+    </p>
+    
+    <button type="button">@Html.ActionLink("Varer", "VareListe", "Vare")</button>
+    <button type="button">@Html.ActionLink("Logg inn","LoggInn", "Admin")</button>
+    
+
+    @if (ViewBag.Innlogget)
+    {
+        <p style="color:blue">Logget inn</p>
+        <button type="button">@Html.ActionLink("Logg ut", "LoggUt","Admin")</button>
+        <button type="button">@Html.ActionLink("Til administratorside", "AdminPage", "Admin")</button>
+    }
+    else
+    {
+        <p style="color:red">Ikke logget inn</p>
+    }
+</div>
+

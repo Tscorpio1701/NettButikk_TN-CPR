@@ -1,0 +1,50 @@
+﻿@model NettButikk_Oppg2.Model.Bestilling
+
+@{
+    ViewBag.Title = "slettBestilling";
+}
+
+<h2>slettBestilling</h2>
+
+<h3>Er du sikker du vil slette denne bestillingen?</h3>
+<div>
+    <h4>Bestilling</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdreDato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdreDato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+            
+            @if (ViewBag.Innlogget)
+            {
+                <p style="color:blue">Logget inn</p>
+                <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+            }
+            else
+            {
+                <p style="color:red">Ikke logget inn</p>
+            }
+        </div>
+    }
+</div>

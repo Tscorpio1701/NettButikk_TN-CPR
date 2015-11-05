@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Administratorside";
+}
+
+<h2>Administratorside</h2>
+
+<div title="Nettbutikk">
+    <button type="button">@Html.ActionLink("Se kundeliste", "kundeListe", "Kunde")</button><br />
+    <br />
+    <button type="button">@Html.ActionLink("Registrer ny kunde", "Registrer", "Kunde")</button><br />
+    <br />
+    <button type="button">@Html.ActionLink("Se bestillingsliste", "BestillingListe", "Bestilling")</button><br/>
+    <br />
+    <button type="button">@Html.ActionLink("Se vareliste", "VareListe", "Vare")</button><br />
+    <br />
+    <button type="button">@Html.ActionLink("Legg til Vare", "RegistrerVare", "Vare")</button>
+</div>
+
+<br />
+
+<div title="Administrator">
+    <button type="button">@Html.ActionLink("Legg til administrator", "LeggTilAdmin", "Admin")</button><br/>
+    <br />
+    <button type="button">@Html.ActionLink("Se administratorer", "AdminListe", "Admin")</button> 
+</div>
+
+@if (ViewBag.Innlogget)
+{
+    <p style="color:blue">Logget inn</p>
+    <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+}
+else
+{
+    <p style="color:red">Ikke logget inn</p>
+}

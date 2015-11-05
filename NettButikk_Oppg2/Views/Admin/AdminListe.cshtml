@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NettButikk_Oppg2.Model.Admin>
+
+@{
+    ViewBag.Title = "AdminListe";
+}
+
+<h2>AdminListe</h2>
+
+<p>
+    @Html.ActionLink("Lag ny Administator", "LeggTilAdmin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brukernavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passord)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Brukernavn
+        </td>
+        <td>
+            @item.Passord
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "EndreAdmin", new { id=item.AdminID }) |
+            @Html.ActionLink("Detaljer", "AdminDetaljer", new { id=item.AdminID }) |
+            @Html.ActionLink("Slett", "SlettAdmin", new { id=item.AdminID })
+        </td>
+    </tr>
+
+}
+    
+</table>
+
+@if (ViewBag.Innlogget)
+{
+    <p style="color:blue">Logget inn</p>
+        <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+}
+else
+{
+    <p style="color:red">Ikke logget inn</p>
+}

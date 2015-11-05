@@ -1,0 +1,50 @@
+﻿@model NettButikk_Oppg2.Model.Admin
+
+@{
+    ViewBag.Title = "SlettAdmin";
+}
+
+<h2>Slett Administrator</h2>
+
+<h3>Er du sikker du ønsker å slette administrator?</h3>
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brukernavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brukernavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passord)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett" class="btn btn-default" /> |
+            @Html.ActionLink("Hjem", "Home")
+            
+            @if (ViewBag.Innlogget)
+            {
+                <p style="color:blue">Logget inn</p>
+                <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+            }
+            else
+            {
+                <p style="color:red">Ikke logget inn</p>
+            }
+        </div>
+    }
+</div>

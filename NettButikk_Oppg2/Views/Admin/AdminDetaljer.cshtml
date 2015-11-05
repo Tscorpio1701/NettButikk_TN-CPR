@@ -1,0 +1,43 @@
+﻿@model NettButikk_Oppg2.Model.Admin
+
+@{
+    ViewBag.Title = "AdminDetaljer";
+}
+
+<h2>Administator Detaljer</h2>
+
+<div>
+    <h4>Administrator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brukernavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brukernavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passord)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Endre", "EndreAdmin", new { id = Model.AdminID }) |
+    @Html.ActionLink("Tilbake til Administratorliste", "AdminListe")
+</p>
+@if (ViewBag.Innlogget)
+{
+    <p style="color:blue">Logget inn</p>
+        <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+}
+else
+{
+    <p style="color:red">Ikke logget inn</p>
+}

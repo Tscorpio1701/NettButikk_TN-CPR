@@ -1,0 +1,43 @@
+﻿@model NettButikk_Oppg2.Model.Bestilling
+
+@{
+    ViewBag.Title = "BestillingDetaljer";
+}
+
+<h2>Bestillings Detaljer</h2>
+
+<div>
+    <h4>Bestilling</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdreDato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdreDato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Endre", "endreBestilling", new { id = Model.BestillingID }) |
+    @Html.ActionLink("Tilbake til liste", "BestillingListe")
+    @if (ViewBag.Innlogget)
+    {
+    <p style="color:blue">Logget inn</p>
+    <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+    }
+    else
+    {
+        <p style="color:red">Ikke logget inn</p>
+    }
+</p>

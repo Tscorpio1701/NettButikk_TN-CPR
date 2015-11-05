@@ -1,0 +1,51 @@
+﻿@model IEnumerable<NettButikk_Oppg2.Model.Bestilling>
+
+@{
+    ViewBag.Title = "BestillingListe";
+}
+
+<h2>BestillingListe</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdreDato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vare)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdreDato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vare.Varenavn)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "endreBestilling", new { id=item.BestillingID }) |
+            @Html.ActionLink("Detaljer", "BestillingDetaljer", new { id=item.BestillingID }) |
+            @Html.ActionLink("Slett", "slettBestilling", new { id=item.BestillingID })
+        </td>
+    </tr>
+}
+    @if (ViewBag.Innlogget)
+    {
+        <p style="color:blue">Logget inn</p>
+        <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+    }
+    else
+    {
+        <p style="color:red">Ikke logget inn</p>
+    }
+</table>

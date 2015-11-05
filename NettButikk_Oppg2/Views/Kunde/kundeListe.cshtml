@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NettButikk_Oppg2.Model.Kunde>
+
+@{
+    ViewBag.Title = "kundeListe";
+}
+
+<h2>kunde Liste</h2>
+
+<p>
+    @Html.ActionLink("Registrer Kunde", "Registrer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fornavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etternavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etternavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.ActionLink("Endre", "Endre", new { id = item.ID }) |
+                @Html.ActionLink("Detaljer", "kundeDetaljer", new { id = item.ID }) |
+                @Html.ActionLink("Slett", "slettKunde", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+    @if (ViewBag.Innlogget)
+    {
+        <p style="color:blue">Logget inn</p>
+        <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+    }
+    else
+    {
+        <p style="color:red">Ikke logget inn</p>
+    }
+

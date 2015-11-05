@@ -1,0 +1,63 @@
+﻿@model NettButikk_Oppg2.Model.Kunde
+
+@{
+    ViewBag.Title = "slettKunde";
+}
+
+<h2>Slett Kunde</h2>
+
+<h3>Er du sikker du ønsker å slette denne kunden?</h3>
+<div>
+    <h4>Kunde</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etternavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etternavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Slett" class="btn btn-default" /> |
+            @Html.ActionLink("Tilbake til Kundeliste", "kundeListe")
+            
+            
+        </div>
+    }
+
+</div>
+
+
+@if (ViewBag.Innlogget)
+            {
+    <p style="color:blue">Logget inn</p>
+                <button type="button">@Html.ActionLink("Logg ut", "LoggUt", "Admin")</button>
+}
+else
+{
+    <p style="color:red">Ikke logget inn</p>
+}
