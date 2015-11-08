@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using NettButikk_Oppg2.DAL;
 using NettButikk_Oppg2.Model;
 
-namespace DAL
+
+namespace NettButikk_Oppg2.DAL
 {
-    public class VareDALStub : IVareDAL
+    public class VareDALStub : DAL.IVareDAL
     {
         public bool endreVare(int id, Vare vare)
         {
@@ -28,6 +29,9 @@ namespace DAL
             var vare = new Vare()
             {
                 ID = 1,
+                Varenavn = "eple",
+                Pris = 5,
+                Varebeholdning = 77
                 
 
             };
@@ -39,17 +43,48 @@ namespace DAL
 
         public Vare hentEnVare(int id)
         {
-            throw new NotImplementedException();
+            if (id == 0)
+            {
+                var vare = new Vare();
+                vare.ID = 0;
+                return vare;
+            }
+            else
+            {
+                var vare = new Vare()
+                {
+                    ID = 1,
+                    Pris = 5,
+                    Varebeholdning = 77
+                };
+                return vare;
+            }
         }
 
         public bool leggTilVare(Vare innVare)
         {
-            throw new NotImplementedException();
+            if(innVare.Varenavn == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public bool slettVare(int slettId)
         {
-            throw new NotImplementedException();
+            if(slettId == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
+
+   
 }

@@ -8,8 +8,15 @@ using NettButikk_Oppg2.Model;
 
 namespace NettButikk_Oppg2.BLL
 {
-    public class VareBLL
+    public class VareBLL : DAL.IVareDAL
     {
+        private VareDALStub vareDALStub;
+
+        public VareBLL(VareDALStub vareDALStub)
+        {
+            this.vareDALStub = vareDALStub;
+        }
+
         public List<Vare> HentAlleVarer()
         {
             var VareDal = new VareDAL();

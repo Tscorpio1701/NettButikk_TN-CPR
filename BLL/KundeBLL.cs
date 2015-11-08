@@ -9,17 +9,17 @@ using BLL;
 
 namespace NettButikk_Oppg2.BLL
 {
-    public class KundeBLL : IKundeBLL
+    public class VareBLL : IKundeBLL
     {
 
             private IKundeDAL dal;
 
-            public KundeBLL(IKundeDAL kunde)
+            public VareBLL(IKundeDAL kunde)
             {
             dal = kunde;
             }
 
-            public KundeBLL()
+            public VareBLL()
             {
             dal = new KundeDAL();
             }

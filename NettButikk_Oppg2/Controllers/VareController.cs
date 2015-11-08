@@ -15,7 +15,19 @@ using NettButikk_Oppg2.BLL;
 namespace NettButikk_Oppg2.Controllers
 {
     public class VareController : Controller
-    {        
+    {
+        private BLL.IVareBLL bll;
+
+        public VareController()
+        {
+            bll = new VareBLL();
+        }
+
+        public VareController(IVareBLL stub)
+        {
+            bll = stub;
+        }
+
         public ActionResult VareListe()
         {
             var VareDb = new VareBLL();

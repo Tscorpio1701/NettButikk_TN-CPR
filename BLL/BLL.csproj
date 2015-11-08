@@ -78,6 +78,7 @@
     <Compile Include="BestillingBLL.cs" />
     <Compile Include="IBestillingBLL.cs" />
     <Compile Include="IKundeBLL.cs" />
+    <Compile Include="IVareBLL.cs" />
     <Compile Include="KundeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VareBLL.cs" />

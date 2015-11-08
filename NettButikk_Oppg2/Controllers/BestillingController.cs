@@ -24,7 +24,7 @@ namespace NettButikk_Oppg2.Controllers
         // GET: Bestilling
         public ActionResult BestillingListe()
         {
-            var bestillingDb = new BestillingDAL();
+            var bestillingDb = new BestillingBLL();
             List<Bestilling> alleBestillinger = bestillingDb.hentAlleBestillinger();
             if (Session["Innlogget"] == null)
             {
@@ -42,7 +42,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult BestillingDetaljer(int id)
         {
-            var bestillingDb = new BestillingDAL();
+            var bestillingDb = new BestillingBLL();
             Bestilling enBestilling = bestillingDb.hentEnBestilling(id);
             if (Session["Innlogget"] == null)
             {
@@ -62,7 +62,7 @@ namespace NettButikk_Oppg2.Controllers
         {
             if(ModelState.IsValid)
             {
-                BestillingDAL bestilling = new BestillingDAL();
+                BestillingBLL bestilling = new BestillingBLL();
                 bool ok = bestilling.leggTilBestilling(id);
                 if (ok) RedirectToAction("BestillingListe");
 
@@ -74,7 +74,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult endreBestilling(int id)
         {
-            var bestillingDb = new BestillingDAL();
+            var bestillingDb = new BestillingBLL();
             Bestilling enBestilling = bestillingDb.hentEnBestilling(id);
             if (Session["Innlogget"] == null)
             {
@@ -95,7 +95,7 @@ namespace NettButikk_Oppg2.Controllers
         {
             if(ModelState.IsValid)
             {
-                var bestilling = new BestillingDAL();
+                var bestilling = new BestillingBLL();
                 bool endringOk = bestilling.endreBestilling(id, endreBestilling);
                 if(endringOk)
                 {
@@ -107,7 +107,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult slettBestilling(int id)
         {
-            var bestillingDb = new BestillingDAL();
+            var bestillingDb = new BestillingBLL();
             Bestilling enBestilling = bestillingDb.hentEnBestilling(id);
             if (Session["Innlogget"] == null)
             {
@@ -126,7 +126,7 @@ namespace NettButikk_Oppg2.Controllers
         [HttpPost]
         public ActionResult slettBestilling(int id, Bestilling slettBestilling)
         {
-            var bestillingDb = new BestillingDAL();
+            var bestillingDb = new BestillingBLL();
             bool slettOk = bestillingDb.slettBestilling(id);
             if(slettOk)
             {

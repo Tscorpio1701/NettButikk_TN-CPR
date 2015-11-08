@@ -21,7 +21,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public KundeController()
         {
-            bll = new KundeBLL();
+            bll = new VareBLL();
         }
 
         public KundeController(IKundeBLL stub)
@@ -30,7 +30,7 @@ namespace NettButikk_Oppg2.Controllers
         }
         public ActionResult kundeListe()
         {
-            var kundeDb = new KundeBLL();
+            var kundeDb = new VareBLL();
             List<Kunde> alleKunder = kundeDb.hentAlle();
             if (Session["Innlogget"] == null)
             {
@@ -48,7 +48,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult kundeDetaljer(int id = 0)
         {
-            var kundeDb = new KundeBLL();
+            var kundeDb = new VareBLL();
             Kunde enKunde = kundeDb.hentEnKunde(id);
             if (Session["Innlogget"] == null)
             {
@@ -85,7 +85,7 @@ namespace NettButikk_Oppg2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var kundeDb = new KundeBLL();
+                var kundeDb = new VareBLL();
                 bool insertOK = kundeDb.leggTilKunde(innKunde);
                 if (insertOK)
                 {
@@ -97,7 +97,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult Endre(int id)
         {
-            var kundeDb = new KundeBLL();
+            var kundeDb = new VareBLL();
             Kunde enKunde = kundeDb.hentEnKunde(id);
             if (Session["Innlogget"] == null)
             {
@@ -118,7 +118,7 @@ namespace NettButikk_Oppg2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var kundeDb = new KundeBLL();
+                var kundeDb = new VareBLL();
                 bool endringOK = kundeDb.endreKunde(id, endreKunde);
                 if (endringOK)
                 {
@@ -130,7 +130,7 @@ namespace NettButikk_Oppg2.Controllers
 
         public ActionResult slettKunde(int id)
         {
-            var kundeDb = new KundeBLL();
+            var kundeDb = new VareBLL();
             Kunde enKunde = kundeDb.hentEnKunde(id);
             if (Session["Innlogget"] == null)
             {
@@ -149,7 +149,7 @@ namespace NettButikk_Oppg2.Controllers
         [HttpPost]
         public ActionResult slettKunde(int id, Kunde slettKunde)
         {
-            var kundeDb = new KundeBLL();
+            var kundeDb = new VareBLL();
             bool slettOK = kundeDb.slettKunde(id);
             if (slettOK)
             {
